@@ -1,0 +1,18 @@
+version: 1
+apps:
+  - appID: ui
+    appDirPath: ./ui
+    appPort: 8001
+    daprHTTPPort: 3510
+    env:
+      DAPR_APP: api
+    command: ["python3","app.py"]
+  - appID: api
+    appDirPath: ./api
+    appPort: 8000
+    daprHTTPPort: 3511
+    env:
+      REDIS_HOST: localhost
+      REDIS_PORT: 6379
+      REDIS_DB: 0
+    command: ["python3","app.py"]
